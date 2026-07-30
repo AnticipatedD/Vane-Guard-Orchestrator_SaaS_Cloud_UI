@@ -7,12 +7,19 @@ class IBMProcessRESTClient:
     Vane-Guard Orchestrator core client engine interface.
     Consumes and validates the GET /rest/bpm/wle/v1/process/{instanceId} endpoint.
     """
-    def __init__(self, base_url: str, auth_token: str):
+    def __init__(self, base_url: str, auth_token: str, manifest_data: dict):
+        """
+        Initializes the client engine and maps enterprise identity keys 
+        directly from your verified JSON Schema parameters.
+        """
         self.base_url = base_url.rstrip('/')
         self.headers = {
             "Authorization": f"Bearer {auth_token}",
             "Accept": "application/json",
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "X-IBM-Partner-Contract": manifest_data["organization_metadata"]["ibm_partner_contract_id"],
+            "X-IBM-Cloud-Account": manifest_data["saas_infrastructure"]["ibm_saas_account_id"],
+            "X-Architect-Signature": manifest_data["architect_metadata"]["eu_expert_id"]
         }
 
     def get_process_instance(
