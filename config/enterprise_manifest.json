@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org",
   "title": "VaneGuardOrchestratorEnterpriseManifest",
-  "description": "Defines core operational identity anchors and compliance boundaries for TARU Global Access cloud routing.",
+  "description": "Defines core operational identity anchors, verified engineering credentials, and compliance boundaries for TARU Global Access cloud routing.",
   "type": "object",
   "properties": {
     "organization_metadata": {
@@ -30,7 +30,41 @@
         "environment_state": { "type": "string", "enum": ["INITIALIZED", "PROVISIONED", "ACTIVE_PRODUCTION"] }
       },
       "required": ["ibm_saas_account_id", "environment_state"]
+    },
+    "verified_credentials_stack": {
+      "type": "object",
+      "properties": {
+        "integration_foundation": { "type": "string", "const": "DLP-SR007337" },
+        "api_security_l3": { "type": "string", "const": "DLP-SR008144" },
+        "ai_solutions_cloud_l4": { "type": "string", "const": "DLP-SR008706" },
+        "event_automation_l3": { "type": "string", "const": "DLP-SR008113" }
+      },
+      "required": ["integration_foundation", "api_security_l3", "ai_solutions_cloud_l4", "event_automation_l3"]
+    },
+    "automotive_telemetry": {
+      "type": "object",
+      "properties": {
+        "target_platform": { "type": "string", "const": "Android Auto" },
+        "release_build": { "type": "string", "const": "17.2.662634-release" },
+        "architecture_profile": { "type": "string", "const": "Aston Martin Vantage Coupe Integration" }
+      },
+      "required": ["target_platform", "release_build", "architecture_profile"]
+    },
+    "deterministic_pipeline_gates": {
+      "type": "object",
+      "properties": {
+        "semantic_attention_cutoff": { "type": "number", "const": 0.785 },
+        "grc_compliance_enforcement": { "type": "string", "const": "IBM OpenPages" }
+      },
+      "required": ["semantic_attention_cutoff", "grc_compliance_enforcement"]
     }
   },
-  "required": ["organization_metadata", "architect_metadata", "saas_infrastructure"]
+  "required": [
+    "organization_metadata", 
+    "architect_metadata", 
+    "saas_infrastructure", 
+    "verified_credentials_stack",
+    "automotive_telemetry",
+    "deterministic_pipeline_gates"
+  ]
 }
