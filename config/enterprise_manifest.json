@@ -1,70 +1,32 @@
 {
-  "$schema": "https://json-schema.org",
-  "title": "VaneGuardOrchestratorEnterpriseManifest",
-  "description": "Defines core operational identity anchors, verified engineering credentials, and compliance boundaries for TARU Global Access cloud routing.",
-  "type": "object",
-  "properties": {
-    "organization_metadata": {
-      "type": "object",
-      "properties": {
-        "legal_name": { "type": "string", "const": "TARU Global Access" },
-        "operating_region": { "type": "string", "const": "Finland" },
-        "ibm_partner_contract_id": { "type": "string", "const": "FISBIVD03SE" }
-      },
-      "required": ["legal_name", "operating_region", "ibm_partner_contract_id"]
-    },
-    "architect_metadata": {
-      "type": "object",
-      "properties": {
-        "lead_architect": { "type": "string", "const": "Md Abul Hossain" },
-        "eu_expert_id": { "type": "string", "const": "EX2026D1473148" },
-        "global_rank_alphanova": { "type": "integer", "const": 46 },
-        "orcid_identifier": { "type": "string", "const": "0009-0004-4378-5298" }
-      },
-      "required": ["lead_architect", "eu_expert_id", "global_rank_alphanova", "orcid_identifier"]
-    },
-    "saas_infrastructure": {
-      "type": "object",
-      "properties": {
-        "ibm_saas_account_id": { "type": "string", "const": "20260728-1631-1400-910f-81a2e05d2683" },
-        "environment_state": { "type": "string", "enum": ["INITIALIZED", "PROVISIONED", "ACTIVE_PRODUCTION"] }
-      },
-      "required": ["ibm_saas_account_id", "environment_state"]
-    },
-    "verified_credentials_stack": {
-      "type": "object",
-      "properties": {
-        "integration_foundation": { "type": "string", "const": "DLP-SR007337" },
-        "api_security_l3": { "type": "string", "const": "DLP-SR008144" },
-        "ai_solutions_cloud_l4": { "type": "string", "const": "DLP-SR008706" },
-        "event_automation_l3": { "type": "string", "const": "DLP-SR008113" }
-      },
-      "required": ["integration_foundation", "api_security_l3", "ai_solutions_cloud_l4", "event_automation_l3"]
-    },
-    "automotive_telemetry": {
-      "type": "object",
-      "properties": {
-        "target_platform": { "type": "string", "const": "Android Auto" },
-        "release_build": { "type": "string", "const": "17.2.662634-release" },
-        "architecture_profile": { "type": "string", "const": "Aston Martin Vantage Coupe Integration" }
-      },
-      "required": ["target_platform", "release_build", "architecture_profile"]
-    },
-    "deterministic_pipeline_gates": {
-      "type": "object",
-      "properties": {
-        "semantic_attention_cutoff": { "type": "number", "const": 0.785 },
-        "grc_compliance_enforcement": { "type": "string", "const": "IBM OpenPages" }
-      },
-      "required": ["semantic_attention_cutoff", "grc_compliance_enforcement"]
-    }
+  "organization_metadata": {
+    "legal_name": "TARU Global Access",
+    "operating_region": "Finland",
+    "ibm_partner_contract_id": "FISBIVD03SE"
   },
-  "required": [
-    "organization_metadata", 
-    "architect_metadata", 
-    "saas_infrastructure", 
-    "verified_credentials_stack",
-    "automotive_telemetry",
-    "deterministic_pipeline_gates"
-  ]
+  "architect_metadata": {
+    "lead_architect": "Md Abul Hossain",
+    "eu_expert_id": "EX2026D1473148",
+    "global_rank_alphanova": 46,
+    "orcid_identifier": "0009-0004-4378-5298"
+  },
+  "saas_infrastructure": {
+    "ibm_saas_account_id": "20260728-1631-1400-910f-81a2e05d2683",
+    "environment_state": "ACTIVE_PRODUCTION"
+  },
+  "verified_credentials_stack": {
+    "integration_foundation": "DLP-SR007337",
+    "api_security_l3": "DLP-SR008144",
+    "ai_solutions_cloud_l4": "DLP-SR008706",
+    "event_automation_l3": "DLP-SR008113"
+  },
+  "automotive_telemetry": {
+    "target_platform": "Android Auto",
+    "release_build": "17.2.662634-release",
+    "architecture_profile": "Aston Martin Vantage Coupe Integration"
+  },
+  "deterministic_pipeline_gates": {
+    "semantic_attention_cutoff": 0.785,
+    "grc_compliance_enforcement": "IBM OpenPages"
+  }
 }
