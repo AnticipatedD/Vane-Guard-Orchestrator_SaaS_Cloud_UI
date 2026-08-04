@@ -5,21 +5,25 @@ A unified control plane framework bridging enterprise legacy backends, real-time
 ## Architectural Overview
 This application acts as an enterprise-grade automated orchestration layer utilizing a zero-trust security paradigm. It maps out end-to-end business workflows across distributed network systems and hybrid mainframes.
 
-                  +-------------------------------------+
+                  +-------------------------------------------------+
+                  |             Vane-Guard-Orchestrator             |
+                  |          Enterprise Control Plane (CP)          |
+                  +------------------------+------------------------+
+                                           |
+    +-----------------------+--------------+--------------+-----------------------+
 
-                  |      Vane-Guard-Orchestrator        |
-                  |             (Control Plane)         |
-                  +------------------+------------------+
-                                     |
-         +---------------------------+---------------------------+
+    |                       |                             |                       |
+    v                       v                             v                       v
++-----------------------+ +-----------------------+ +-----------------------+ +-----------------------+
 
-         |                           |                           |
-         v                           v                           v
-+------------------+       +------------------+       +------------------+
+|   Mainframe & Data    | |   Infrastructure &    | |   Compliance, GRC &   | |  Telemetry, Network   |
+|   Segment Resolver    | |  Multi-Cloud Compute  | |    watsonx Systems    | |   & Cost Analytics    |
++-----------------------+ +-----------------------+ +-----------------------+ +-----------------------+
 
-|   IMS DB/MF      |       |  Infrastructure  |       |  Compliance GRC  |
-| Segment Resolver |       | SevOne Telemetry |       |  OpenPages Gate  |
-+------------------+       +------------------+       +------------------+
+| • IMS DB/MF Bridge    | | • Kubecost L4 Cluster | | • watsonx.governance  | | • SevOne Telemetry L2 |
+| • Segment Resolver    | | • Power Virtual Server| | • OpenPages Gate      | | • Network Management  |
++-----------------------+ +-----------------------+ +-----------------------+ +-----------------------+
+
 
 ## Production Inventory
 The repository is split into specific execution modules to isolate technical tasks cleanly:
